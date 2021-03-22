@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     
+        <style type="text/css">
+            #MAP{
+                height: 500px;
+                width: 100%;
+
+            }
+          
+        
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: rgb(11, 243, 115);
+            padding: 5px;
+            border: 1px solid rgb(70, 6, 248);
+            text-align: center;
+            font-family: "Roboto", "sans-serif";
+            line-height: 30px;
+            padding-left: 10px;
+        }
+            
+        </style>
+        <script>
+            function initMap(){
+                                const directionsService = new google.maps.DirectionsService();
+                                const directionsRenderer = new google.maps.DirectionsRenderer();
+                                const DAIHOCGTVT ={ lat:10.846074501329815,  lng: 106.79457478705504};
+                                const nha={lat: 10.820651,   lng:106.766407}
+                                
+                                const map = new google.maps.Map(document.getElementById("MAP"),
+                                {zoom:17,center:DAIHOCGTVT,});
+                                const marker = new google.maps.Marker({
+                                    position: DAIHOCGTVT,
+                                    map: map,
+                                    streetViewControl: true,
+                                    scaleControl: true,
+                                    title : "ĐẠI HỌC GTVT PHÂN HIỆU TẠI THÀNH PHỐ HỒ CHÍ MINH",
+                                    icon:"image.png"
+
+                                });
+                                
+                                const marker1 = new google.maps.Marker({
+                                   position:nha,
+                                    map: map,
+                                    title : "NHÀ TRỌ",
+                                    icon:"NTN.png"
+
+                                });
+
+                                
+                                const infoWindow = new google.maps.InfoWindow({
+                                    
+                                    content: "ĐẠI HỌC GTVT PHÂN HIỆU TẠI TP.HỒ CHÍ MINH",
+                                    position : DAIHOCGTVT,
+                                    });
+                                
+                                marker.addListener("click", () => {
+                            
+                                infoWindow.open(map, marker);
+                                    
+                                 });
+
+
+
+                                 const infoWindow1 = new google.maps.InfoWindow({
+                                    content: "NGUYỄN THÀNH NHÂN<BR>21 TUỔI<BR>MSV:5951071067<BR> QUÊ QUÁN : BÌNH ĐỊNH<BR>EMAIL:5951071067@ST.UTC2.EDU.VN",
+                                    position : nha,
+                                    });
+                                
+                                marker1.addListener("click", () => {
+                            
+                                infoWindow1.open(map, marker1);
+                                    
+                                 });
+                             
+                                
+                            //  CHI DUONG DI
+                            directionsRenderer.setMap(map);
+
+                                const onChangeHandler = function () {
+                                    calculateAndDisplayRoute(directionsService, directionsRenderer);
+                                };
+                                document.getElementById("start").addEventListener("change", onChangeHandler);
+                                document.getElementById("end").addEventListener("change", onChangeHandler);}
+
+
+
+
+
+            
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+            directionsService.route(
+                {
+                    origin: {
+                        query: document.getElementById("start").value,
+                    },
+                    destination: {
+                        query: document.getElementById("end").value,
+                    },
+                    travelMode: google.maps.TravelMode.DRIVING,
+                },
+                (response, status) => {
+                    if (status === "OK") {
+                        directionsRenderer.setDirections(response);
+                    } else {window.alert("Directions request failed due to " + status);}});
+                                }
+                            
+                                                        
+
+
+                    
+            
+                </script>
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+              
+            
+       
+
+    </head>
+    <body>
+        <div id="floating-panel">
+            <b>Start: </b>
+            <select id="start">
+                <option value="PHÂN HIỆU TRƯỜNG ĐH GTVT TẠI TP. HỒ CHÍ MINH, il">UTC2</option>
+                <option value="NHÀ TRỌ, mo">KTX</option>
+               
+            </select>
+            <b>End: </b>
+            <select id="end">
+                <option value="PHÂN HIỆU TRƯỜNG ĐH GTVT TẠI TP. HỒ CHÍ MINH, il">UTC2</option>
+                <option value="NHÀ TRỌ, mo">KTX</option>
+                >
+              
+            </select>
+        </div>
+        <H5>ĐÂY LÀ NƠI SẼ ĐẶT BẢN ĐỒ VÀO</H5>
+        <div ID="MAP"></div>
+
+        
+        <script
+         src="https://maps.googleapis.com/maps/api/js?AIzaSyDXJgplucqcYRODYmI4tbzkN-Hm3lnemlM&callback=initMap&libraries=&v=weekly" 
+         async>
+        </script>
+        
+    </body>
+    </html>
