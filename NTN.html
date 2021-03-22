@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-     
+   
+        
         <style type="text/css">
             #MAP{
                 height: 500px;
@@ -36,7 +37,7 @@
                                 const directionsService = new google.maps.DirectionsService();
                                 const directionsRenderer = new google.maps.DirectionsRenderer();
                                 const DAIHOCGTVT ={ lat:10.846074501329815,  lng: 106.79457478705504};
-                                const nha={lat: 10.820651,   lng:106.766407}
+                                const nha={lat: 10.843727304493422,   lng:106.79520873660792}
                                 
                                 const map = new google.maps.Map(document.getElementById("MAP"),
                                 {zoom:17,center:DAIHOCGTVT,});
@@ -46,6 +47,7 @@
                                     streetViewControl: true,
                                     scaleControl: true,
                                     title : "ĐẠI HỌC GTVT PHÂN HIỆU TẠI THÀNH PHỐ HỒ CHÍ MINH",
+                                    
                                     icon:"image.png"
 
                                 });
@@ -53,7 +55,7 @@
                                 const marker1 = new google.maps.Marker({
                                    position:nha,
                                     map: map,
-                                    title : "NHÀ TRỌ",
+                                    title : "KÝ TÚC XÁ ĐẠI HỌC GTVT",
                                     icon:"NTN.png"
 
                                 });
@@ -61,7 +63,7 @@
                                 
                                 const infoWindow = new google.maps.InfoWindow({
                                     
-                                    content: "ĐẠI HỌC GTVT PHÂN HIỆU TẠI TP.HỒ CHÍ MINH",
+                                    content: "ĐẠI HỌC GTVT PHÂN HIỆU TẠI TP.HỒ CHÍ MINH<br>Địa chỉ: 451 Lê Văn Việt, Tăng Nhơn Phú A, Quận 9, Thành phố Hồ Chí Minh",
                                     position : DAIHOCGTVT,
                                     });
                                 
@@ -74,7 +76,7 @@
 
 
                                  const infoWindow1 = new google.maps.InfoWindow({
-                                    content: "NGUYỄN THÀNH NHÂN<BR>21 TUỔI<BR>MSV:5951071067<BR> QUÊ QUÁN : BÌNH ĐỊNH<BR>EMAIL:5951071067@ST.UTC2.EDU.VN",
+                                    content: "NGUYEN THANH NHAN<BR>21 TUỔI<BR>MSV:5951071067 <BR>QUÊ QUÁN : BINH DINH ",
                                     position : nha,
                                     });
                                 
@@ -96,6 +98,8 @@
 
 
 
+
+
             
         function calculateAndDisplayRoute(directionsService, directionsRenderer) {
             directionsService.route(
@@ -113,7 +117,7 @@
                         directionsRenderer.setDirections(response);
                     } else {window.alert("Directions request failed due to " + status);}});
                                 }
-                    
+                            
             
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -127,13 +131,13 @@
             <b>Start: </b>
             <select id="start">
                 <option value="PHÂN HIỆU TRƯỜNG ĐH GTVT TẠI TP. HỒ CHÍ MINH, il">UTC2</option>
-                <option value="NHÀ TRỌ, mo">nhà trọ</option>
+                <option value="KÍ TÚC XÁ ĐẠI HỌC GIAO THÔNG VẬN TẢI PHÂN HIỆU TẠI TP.HCM, mo">KTX</option>
                
             </select>
             <b>End: </b>
             <select id="end">
                 <option value="PHÂN HIỆU TRƯỜNG ĐH GTVT TẠI TP. HỒ CHÍ MINH, il">UTC2</option>
-                <option value="NHÀ TRỌ, mo">nhà trọ</option>
+                <option value="KÍ TÚC XÁ ĐẠI HỌC GIAO THÔNG VẬN TẢI PHÂN HIỆU TẠI TP.HCM, mo">KTX</option>
                 >
               
             </select>
@@ -143,7 +147,7 @@
 
         
         <script
-         src="https://maps.googleapis.com/maps/api/js?AIzaSyDXJgplucqcYRODYmI4tbzkN-Hm3lnemlM&callback=initMap&libraries=&v=weekly" 
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXJgplucqcYRODYmI4tbzkN-Hm3lnemlM&callback=initMap&libraries=&v=weekly" 
          async>
         </script>
         
